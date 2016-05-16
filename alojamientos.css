@@ -1,0 +1,12 @@
+
+/* CSS for simple.html (Leaflet) */
+
+#map { height: 400px;
+
+    }
+
+div#list {
+
+      height: 400px;
+      overflow: scroll;
+    }
