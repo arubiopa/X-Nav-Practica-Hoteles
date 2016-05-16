@@ -27,18 +27,18 @@ function show_accomodation(){
    if(accomodation.multimedia != null){
      for(var j=0;j< accomodation.multimedia.media.length; j++){
        if (j = 0){
-         textoHtml+=   '<li class="active" data-target="#myCarousel" data-slide-to="'+ j +'"></li>'
+         textoHtml+='<li class="active" data-target="#myCarousel" data-slide-to="'+ j +'"></li>'
        }else{
-         textoHtml+=   '<li data-target="#myCarousel" data-slide-to="'+ j +'"></li>'
+         textoHtml+= '<li data-target="#myCarousel" data-slide-to="'+ j +'"></li>'
        }
      }
      $('.carousel-indicators').html(textoHtml)
      var textoHtml2 = '';
      for(var j=0;j< accomodation.multimedia.media.length; j++){
        if (j =0 ){
-         textoHtml2+=  '<div class="item active"> <img src="'+ accomodation.multimedia.media[j].url +'" alt="chania"></div>'
+         textoHtml2+='<div class="item active"> <img src="'+ accomodation.multimedia.media[j].url +'" alt="chania"></div>'
        }else{
-         textoHtml2+=  '<div class="item"> <img src="'+ accomodation.multimedia.media[j].url +'" alt="chania"></div>'
+         textoHtml2+='<div class="item"> <img src="'+ accomodation.multimedia.media[j].url +'" alt="chania"></div>'
        }
     }
      $('.carousel-inner').html(textoHtml2)

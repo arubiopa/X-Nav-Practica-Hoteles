@@ -1,12 +1,63 @@
 
 /* CSS for simple.html (Leaflet) */
 
-#map { height: 400px;
-
+#map {
+  height: 400px;
+  border-style: dotted;
+  border-radius: 15px 15px 15px 15px;
     }
 
 div#list {
+  height: 400px;
+  overflow: scroll;
+  border-radius: 15px 15px 15px 15px;
+}
 
-      height: 400px;
-      overflow: scroll;
-    }
+#main-header {
+  width: 100%;
+	background: #1D0154;
+	color: white;
+	height: 80px;
+}
+#main-header a {
+	color: white;
+}
+
+#logo-header {
+	float: left;
+	padding: 15px 0 0 20px;
+	text-decoration: none;
+  text-align: center;
+}
+
+#logo-header .site-name {
+	display: block;
+	font-weight: 700;
+	font-size: 1.2em;
+}
+
+#logo-header .site-desc {
+	display: block;
+	font-weight: 300;
+	font-size: 0.8em;
+	color: white;
+}
+
+.button{
+  background-color: #9E73F3;
+  border-radius: 15px 15px 15px 15px;
+}
+#main-footer {
+	background: #1D0154;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	margin-top: 40px;
+}
+	#main-footer p {
+		margin: 0;
+	}
+
+#main-footer a {
+		color: white;
+	}

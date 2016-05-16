@@ -11,12 +11,24 @@
      <link href="alojamientos.css" rel="stylesheet">
       <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+      <link rel="stylesheet" href="/lib/w3-theme-teal.css">
      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
      <script type="text/javascript" src="jquery-ui.js"></script>
      <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
      <script type="text/javascript" src="alojamientos.js"></script>
+
    </head>
    <body>
+     <header id="main-header">
+
+       <a id="logo-header" >
+         <span class="site-name">Duerme en Madrid</span>
+         <span class="site-desc">Alojamiento para todos los gustos</span>
+         <!--<img src="logo.jpg"/>-->
+       </a> <!-- / #logo-header -->
+     </header>
+
      <div id="tabs">
        <ul>
         <li><a href="#tabs-1">PRINCIPAL</a></li>
@@ -28,7 +40,7 @@
         <div class="col-md-6" id="map">
         </div>
         <div class="col-md-6" >
-            <button type="button" id="get">Click here to get accomodations!</button>
+            <button type="button" class="button" id="get">Click Me!</button>
               <div id="list"></div>
         </div>
 
@@ -55,13 +67,22 @@
         </div>
       </div>
     <div id="tabs-2">
-
+      <div class="row">
+        <div class="col-md-6">
+            <div id="hoteles"></div>
+        </div>
+        <div class="col-md-6" >
+              <div id="list"></div>
+        </div>
+      </div>
     </div>
       <div id="tabs-3">
 
     </div>
     </div>
 
-
+    <footer id="main-footer">
+		<p>&copy; 2016 <a href="">Todos los derechos reservados</a></p>
+	</footer> <!-- / #main-footer -->
    </body>
 </html>
