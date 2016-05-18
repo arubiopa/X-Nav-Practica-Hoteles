@@ -107,7 +107,7 @@ function introguardar(){
   });
   var myrepo = github.getRepo(usuario, repositorio);
   myrepo.write('gh-pages', fichero,
-		 JSON.stingify(data),
+		 JSON.stringify(data),
 		 "coleccion", function(err) {
 		     console.log (err)
 		 });
