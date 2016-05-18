@@ -6,11 +6,21 @@
   border-style: dotted;
   border-radius: 15px 15px 15px 15px;
     }
-
+#droppable{
+  height: 400px;
+}
 div#list {
   height: 400px;
   overflow: scroll;
   border-radius: 15px 15px 15px 15px;
+  position:static;
+}
+
+div#hoteles {
+  height: 400px;
+  overflow-y: scroll;
+  border-radius: 15px 15px 15px 15px;
+  position:static;
 }
 
 #main-header {
