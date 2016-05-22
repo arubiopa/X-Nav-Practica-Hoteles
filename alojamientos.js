@@ -5,9 +5,11 @@
 // Simple version. Doesn't work well if some of the fields are not defined.
 // (for example, if there are no pictures)
 //
-
+var hselec=undefined
 var seleccion=undefined;
 var data ={}
+var total={}
+var google = {}
 function show_accomodation(){
   var textoHtml = '';
   var accomodation = accomodations[$(this).attr('no')];
@@ -29,6 +31,8 @@ function show_accomodation(){
   $('#desc').html('<h1>' + name + '</h1>'+ '<h3>'+ dir + ciu +'</h3>'
    + '<p> ' + cat +' <--> ' + subcat + '</p>'
    + desc );
+  hselec = $(this).attr('no');
+  mostrargoogle()
   var descalo = desc;
   $('#descalo').html('<h1>' + name + '</h1>'+ '<h3>'+ dir + ciu +'</h3>'
    + '<p> ' + cat +' <--> ' + subcat + '</p>'
@@ -75,8 +79,6 @@ function get_accomodations(){
     $('#hoteles').html(list);
     $('.ppal li').click(show_accomodation);
 
-
-
     $('.draggable').draggable({
       appendTo:"body",
       helper:"clone",
@@ -94,6 +96,35 @@ function guardarcol(){
 
 function introcargar(){
   var url = $("#url").val();
+  data = {}
+  google = {}
+  $.getJSON(url, function(datos) {
+    console.log("DATOS : ")
+    console.log(datos)
+    for(var name in datos){
+      if(name == "colecciones"){
+        var lista = '<h2>Colecciones</h3></br>' + '<ul id="listacol">';
+        console.log("DATOS colecciones: ")
+        console.log(datos[name])
+        data = datos[name]
+        for (dat in datos[name]){
+          lista =lista +'<li id="'+dat+'"> '+ dat + '</li>';
+        }
+        lista = lista + '</ul>'
+        $('#col').html(lista);
+        $("#listacol li").click(function(){
+            seleccion=$(this).attr("id");
+            actualizarcol();
+        });
+      }else{
+        for (dat in datos[name]){
+          console.log("DATOS colecciones: ")
+          console.log(datos[name])
+          google = datos[name]
+        }
+      }
+    }
+  })
 }
 
 function introguardar(){
@@ -105,9 +136,11 @@ function introguardar(){
   	token: token,
   	auth: "oauth"
   });
+  total["google"]=google
+  total["colecciones"] = data
   var myrepo = github.getRepo(usuario, repositorio);
   myrepo.write('gh-pages', fichero,
-		 JSON.stringify(data),
+		 JSON.stringify(total),
 		 "coleccion", function(err) {
 		     console.log (err)
 		 });
@@ -126,19 +159,60 @@ function introColeccion(){
   $('#col').html(lista);
   $("#listacol li").click(function(){
       seleccion=$(this).attr("id");
+      actualizarcol();
   });
-  coleccion =""
+}
+
+function introgoogle(){
+  var apiKey = 'AIzaSyDN-BN5pygOh8IBgi4HvWo6HSSnGMZX_GE';
+  gapi.client.setApiKey(apiKey);
+    gapi.client.load('plus', 'v1', function() {
+      var request = gapi.client.plus.people.get({
+        'userId':  $("#goo").val()
+        // For instance:
+        // 'userId': '+GregorioRobles'
+      });
+      request.execute(function(resp) {
+        var arr=[]
+        var objeto ={nombre :resp.displayName,
+                    url:resp.image.url}
+
+        if (google[hselec] == undefined){
+          arr.push(objeto)
+        }else{
+          arr=google[hselec]
+          arr.push(objeto)
+        }
+        google[hselec]=arr
+        mostrargoogle()
+      });
+    });
+}
+function mostrargoogle(){
+  lista = "<ul>"
+  for(var name in google){
+    if (name == hselec){
+      arr=google[name]
+      for (var i=0;i<arr.length;i++){
+        console.log(i)
+        lista = lista +'<li id="'+arr[i].nombre+'"> '+ '<img src="'+arr[i].url+'">' + arr[i].nombre + '</li>';
+      }
+    }
+  }
+  lista = lista + '</ul>'
+  $('#mostrargoogle').html(lista)
 }
 
 function actualizarcol(){
   var array = data[seleccion]
+  console.log(seleccion)
   var lista ='<h3>Colección '+seleccion+'</h3>'+'<ul>'
-  console.log(array)
   for(var i=0;i<array.length;i++){
     lista =lista +'<li> '+ accomodations[array[i]].basicData.title + '</li>';
   }
   lista =lista +'</ul>'
   $('#droppable').html(lista)
+  $('#colppal').html(lista)
 }
 
 $(document).ready(function() {

@@ -6,6 +6,11 @@
   border-style: dotted;
   border-radius: 15px 15px 15px 15px;
     }
+
+#colppal{
+  border-style: dotted;
+  border-radius: 15px 15px 15px 15px;
+}
 #droppable{
   height: 400px;
 }
@@ -25,9 +30,9 @@ div#hoteles {
 
 #main-header {
   width: 100%;
-	background: #1D0154;
+	background: #1D0154 url("banner.png");
 	color: white;
-	height: 80px;
+	height: 200px;
 }
 #main-header a {
 	color: white;
@@ -43,22 +48,24 @@ div#hoteles {
 #logo-header .site-name {
 	display: block;
 	font-weight: 700;
-	font-size: 1.2em;
+	font-size: 4em;
 }
 
 #logo-header .site-desc {
 	display: block;
 	font-weight: 300;
-	font-size: 0.8em;
+	font-size: 1.5em;
 	color: white;
 }
+
+
 
 .button{
   background-color: #9E73F3;
   border-radius: 15px 15px 15px 15px;
 }
 #main-footer {
-	background: #1D0154;
+	background: #4E7DD1;
 	color: white;
 	text-align: center;
 	padding: 20px;
@@ -71,3 +78,6 @@ div#hoteles {
 #main-footer a {
 		color: white;
 	}
+body{
+  background-color:#4E7DD1;
+}
